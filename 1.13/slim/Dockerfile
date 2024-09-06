@@ -17,7 +17,7 @@ RUN set -eux && \
 		unzip && \
 	rm -rf /var/lib/apt/lists/* && \
 	\
-	curl -o go.tgz -sSL "https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
+	curl -o go.tgz -sSL "https://go.dev/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
 	echo "${GOLANG_DOWNLOAD_SHA256} *go.tgz" | sha256sum -c - && \
 	tar -C /usr/local -xzf go.tgz && \
 	rm go.tgz && \
