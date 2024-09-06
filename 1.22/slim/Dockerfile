@@ -1,8 +1,9 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-LABEL maintainer "GCPUG <https://gcpug.jp/>"
+LABEL maintainer "mukko <mukk0.aquarius@gmail.com>"
 
 ARG GOPATH=/go
 ENV GOPATH=${GOPATH} \
+	CLOUDSDK_PYTHON=/usr/bin/python3 \
 	PATH=/go/bin:/usr/local/go/bin:$PATH
 
 ARG GOLANG_VERSION=1.22.5

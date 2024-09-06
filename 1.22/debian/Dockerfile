@@ -1,5 +1,5 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:latest
-LABEL maintainer "GCPUG <https://gcpug.jp/>"
+LABEL maintainer "mukko <mukk0.aquarius@gmail.com>"
 
 ARG GOPATH=/go
 ENV GOPATH=${GOPATH} \
