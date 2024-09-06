@@ -1,14 +1,15 @@
 FROM gcr.io/google.com/cloudsdktool/cloud-sdk:slim
-LABEL maintainer "GCPUG <https://gcpug.jp/>"
+LABEL maintainer "mukko <mukk0.aquarius@gmail.com>"
 
 ARG GOPATH=/go
 ENV GOPATH=${GOPATH} \
 	PATH=/go/bin:/usr/local/go/bin:$PATH
 
 ARG GOLANG_VERSION=1.22.5
-ARG GOLANG_DOWNLOAD_SHA256=7fe7a73f55ba3e2285da36f8b085e5c0159e9564ef5f63ee0ed6b818ade8ef04
+ARG GOLANG_DOWNLOAD_SHA256=904b924d435eaea086515bc63235b192ea441bd8c9b198c507e85009e6e4c7f0
 
 RUN set -eux && \
+	CLOUDSDK_PYTHON=/usr/bin/python3 \
 	apt-get update && \
 	apt-get install -yqq --no-install-suggests --no-install-recommends \
         google-cloud-sdk-app-engine-go \
@@ -17,7 +18,7 @@ RUN set -eux && \
 		unzip && \
 	rm -rf /var/lib/apt/lists/* && \
 	\
-	curl -o go.tgz -sSL "https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
+	curl -o go.tgz -sSL "https://go.dev/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
 	echo "${GOLANG_DOWNLOAD_SHA256} *go.tgz" | sha256sum -c - && \
 	tar -C /usr/local -xzf go.tgz && \
 	rm go.tgz && \

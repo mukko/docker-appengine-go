@@ -18,7 +18,7 @@ RUN apk add --no-cache \
 		beta && \
     chmod +x /google-cloud-sdk/platform/google_appengine/*.py && \
     \
-    curl -o go.tgz -sSL "https://golang.org/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
+    curl -o go.tgz -sSL "https://go.dev/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
     echo "${GOLANG_DOWNLOAD_SHA256} *go.tgz" | sha256sum -c - && \
     tar -C /usr/local -xzf go.tgz && \
     rm go.tgz
