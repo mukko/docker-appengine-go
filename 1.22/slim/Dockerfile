@@ -3,13 +3,13 @@ LABEL maintainer "mukko <mukk0.aquarius@gmail.com>"
 
 ARG GOPATH=/go
 ENV GOPATH=${GOPATH} \
-	CLOUDSDK_PYTHON=/usr/bin/python3 \
 	PATH=/go/bin:/usr/local/go/bin:$PATH
 
 ARG GOLANG_VERSION=1.22.5
 ARG GOLANG_DOWNLOAD_SHA256=904b924d435eaea086515bc63235b192ea441bd8c9b198c507e85009e6e4c7f0
 
 RUN set -eux && \
+	CLOUDSDK_PYTHON=/usr/bin/python3 \
 	apt-get update && \
 	apt-get install -yqq --no-install-suggests --no-install-recommends \
         google-cloud-sdk-app-engine-go \
