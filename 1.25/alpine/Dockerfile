@@ -1,0 +1,26 @@
+FROM gcr.io/google.com/cloudsdktool/cloud-sdk:alpine
+LABEL maintainer "mukko <mukk0.aquarius@gmail.com>"
+
+ENV GOPATH=/go \
+	PATH=/go/bin:/usr/local/go/bin:/google-cloud-sdk/bin:/google-cloud-sdk/platform/google_appengine:$PATH
+
+ARG GOLANG_VERSION=1.25.6
+ARG GOLANG_DOWNLOAD_SHA256=f022b6aad78e362bcba9b0b94d09ad58c5a70c6ba3b7582905fababf5fe0181a
+
+RUN apk add --no-cache \
+        gcc \
+        libc-dev \
+        make \
+        unzip && \
+    \
+    gcloud components install \
+		app-engine-go beta && \
+    \
+    chmod +x /google-cloud-sdk/platform/google_appengine/*.py && \
+    \
+    curl -o go.tgz -sSL "https://go.dev/dl/go${GOLANG_VERSION}.linux-amd64.tar.gz" && \
+    echo "${GOLANG_DOWNLOAD_SHA256} *go.tgz" | sha256sum -c - && \
+    tar -C /usr/local -xzf go.tgz && \
+    rm go.tgz
+
+VOLUME ["/root/.config"]
