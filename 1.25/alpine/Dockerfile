@@ -5,7 +5,7 @@ ENV GOPATH=/go \
 	PATH=/go/bin:/usr/local/go/bin:/google-cloud-sdk/bin:/google-cloud-sdk/platform/google_appengine:$PATH
 
 ARG GOLANG_VERSION=1.25.6
-ARG GOLANG_DOWNLOAD_SHA256=904b924d435eaea086515bc63235b192ea441bd8c9b198c507e85009e6e4c7f0
+ARG GOLANG_DOWNLOAD_SHA256=f022b6aad78e362bcba9b0b94d09ad58c5a70c6ba3b7582905fababf5fe0181a
 
 RUN apk add --no-cache \
         gcc \
